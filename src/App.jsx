@@ -1,121 +1,132 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from 'react';
+import { ConfigProvider, theme, Layout, Typography, Button, Card, Row, Col } from 'antd';
+import './App.css'; // Import the new CSS
+
+const { Content } = Layout;
+const { Title, Text } = Typography;
+
+// --- Sub-components ---
+
+const AppTitle = () => (
+  <Title level={3} className="app-title">
+    TecaTrack
+  </Title>
+);
+
+const UserGreeting = ({ nombreUsuario }) => (
+  <Text className="user-greeting">
+    Hola, {nombreUsuario}
+  </Text>
+);
+
+const UploadReceiptButton = () => (
+  <Button type="primary" size="large" className="upload-btn">
+    Cargar comprobante
+  </Button>
+);
+
+const DashboardHeader = ({ nombreUsuario }) => (
+  <Row justify="space-between" align="middle" className="dashboard-header">
+    <Col>
+      <AppTitle />
+      <UserGreeting nombreUsuario={nombreUsuario} />
+    </Col>
+    <Col>
+      <UploadReceiptButton />
+    </Col>
+  </Row>
+);
+
+const TotalBalanceCard = ({ totalGlobal }) => (
+  <Card 
+    className="total-card"
+    bordered={true}
+  >
+    <div className="card-content-flex total-card-content">
+      <Text className="total-label">
+        Total
+      </Text>
+      <Title level={1} className="total-value">
+        {totalGlobal}
+      </Title>
+    </div>
+  </Card>
+);
+
+const AccountBalanceCard = ({ nombreCuenta, totalCuenta }) => (
+  <Card 
+    className="account-card"
+    bordered={true}
+  >
+    <div className="card-content-flex account-card-content">
+      <Text className="account-name">
+        {nombreCuenta}
+      </Text>
+      <Title level={3} className="account-value">
+        {totalCuenta}
+      </Title>
+    </div>
+  </Card>
+);
+
+const AccountsGrid = ({ cuentas }) => (
+  <Row gutter={[16, 16]}>
+    {cuentas.map((cuenta, index) => (
+      <Col xs={24} sm={12} key={index}>
+        <AccountBalanceCard nombreCuenta={cuenta.nombreCuenta} totalCuenta={cuenta.totalCuenta} />
+      </Col>
+    ))}
+  </Row>
+);
+
+// --- Main App ---
+
+const themeConfig = {
+  algorithm: theme.darkAlgorithm,
+  token: {
+    colorBgBase: '#0B0F14',
+    colorTextBase: '#E6EEF8',
+    colorTextDescription: '#9FB0C3',
+    colorPrimary: '#1677FF',
+    colorSuccess: '#22C55E',
+    colorBorderSecondary: '#1E2A3A',
+  },
+  components: {
+    Layout: {
+      bodyBg: '#0B0F14',
+    },
+    Card: {
+      colorBgContainer: '#121923',
+      colorBorderSecondary: '#1E2A3A',
+      paddingLG: 24, 
+    },
+    Typography: {
+      colorTextHeading: '#E6EEF8',
+    }
+  }
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const nombreUsuario = "Alex";
+  const totalGlobal = "$ 14,500.00";
+  const cuentasMock = [
+    { nombreCuenta: "Santander", totalCuenta: "$ 8,200.00" },
+    { nombreCuenta: "Mercado Pago", totalCuenta: "$ 3,150.00" },
+    { nombreCuenta: "BBVA", totalCuenta: "$ 1,800.00" },
+    { nombreCuenta: "Efectivo", totalCuenta: "$ 1,350.00" },
+  ];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <ConfigProvider theme={themeConfig}>
+      <Layout className="app-layout">
+        <Content className="app-content">
+          <DashboardHeader nombreUsuario={nombreUsuario} />
+          <TotalBalanceCard totalGlobal={totalGlobal} />
+          <AccountsGrid cuentas={cuentasMock} />
+        </Content>
+      </Layout>
+    </ConfigProvider>
+  );
 }
 
-export default App
+export default App;
