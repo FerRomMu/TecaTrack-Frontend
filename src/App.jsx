@@ -38,9 +38,9 @@ const DashboardHeader = ({ nombreUsuario }) => (
 );
 
 const TotalBalanceCard = ({ totalGlobal }) => (
-  <Card 
+  <Card
     className="total-card"
-    bordered={true}
+    variant="outlined"
   >
     <div className="card-content-flex total-card-content">
       <Text className="total-label">
@@ -54,9 +54,9 @@ const TotalBalanceCard = ({ totalGlobal }) => (
 );
 
 const AccountBalanceCard = ({ nombreCuenta, totalCuenta }) => (
-  <Card 
+  <Card
     className="account-card"
-    bordered={true}
+    variant="outlined"
   >
     <div className="card-content-flex account-card-content">
       <Text className="account-name">
@@ -98,7 +98,7 @@ const themeConfig = {
     Card: {
       colorBgContainer: '#121923',
       colorBorderSecondary: '#1E2A3A',
-      paddingLG: 24, 
+      paddingLG: 24,
     },
     Typography: {
       colorTextHeading: '#E6EEF8',
