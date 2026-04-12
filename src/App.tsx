@@ -1,14 +1,4 @@
-import React from "react";
-import {
-  Layout,
-  Typography,
-  Button,
-  Card,
-  Row,
-  Col,
-  Flex,
-  theme,
-} from "antd";
+import { Layout, Typography, Button, Card, Row, Col, Flex, theme } from 'antd';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -54,12 +44,7 @@ function DashboardHeader({ userName, onUploadClick }: DashboardHeaderProps) {
         <Text type="secondary">Hola, {userName}</Text>
       </div>
 
-      <Button
-        type="primary"
-        size="large"
-        shape="round"
-        onClick={onUploadClick}
-      >
+      <Button type="primary" size="large" shape="round" onClick={onUploadClick}>
         Cargar comprobante
       </Button>
     </Flex>
@@ -90,10 +75,7 @@ function TotalBalanceCard({ totalBalance }: TotalBalanceCardProps) {
   );
 }
 
-function AccountBalanceCard({
-  accountName,
-  accountBalance,
-}: AccountBalanceCardProps) {
+function AccountBalanceCard({ accountName, accountBalance }: AccountBalanceCardProps) {
   return (
     <Card hoverable>
       <Flex vertical gap={4}>
@@ -113,36 +95,33 @@ export default function DashboardPage() {
   const { token } = theme.useToken();
 
   // TODO: reemplazar por datos reales (API + Auth context)
-  const userName = "Alex";
-  const totalBalance = "$ 14,500.00";
+  const userName = 'Alex';
+  const totalBalance = '$ 14,500.00';
 
   // TODO: reemplazar por datos reales (API)
   const accounts: Account[] = [
-    { accountName: "Santander", accountBalance: "$ 8,200.00" },
-    { accountName: "Mercado Pago", accountBalance: "$ 3,150.00" },
-    { accountName: "BBVA", accountBalance: "$ 1,800.00" },
-    { accountName: "Efectivo", accountBalance: "$ 1,350.00" },
+    { accountName: 'Santander', accountBalance: '$ 8,200.00' },
+    { accountName: 'Mercado Pago', accountBalance: '$ 3,150.00' },
+    { accountName: 'BBVA', accountBalance: '$ 1,800.00' },
+    { accountName: 'Efectivo', accountBalance: '$ 1,350.00' },
   ];
 
   const handleUploadReceipt = () => {
     // TODO: abrir modal / navegar a pantalla de carga
-    console.log("Upload receipt clicked");
+    console.log('Upload receipt clicked');
   };
 
   return (
-    <Layout style={{ minHeight: "100vh", backgroundColor: token.colorBgBase }}>
+    <Layout style={{ minHeight: '100vh', backgroundColor: token.colorBgBase }}>
       <Content
         style={{
-          padding: "24px 16px",
+          padding: '24px 16px',
           maxWidth: 900,
-          margin: "0 auto",
-          width: "100%",
+          margin: '0 auto',
+          width: '100%',
         }}
       >
-        <DashboardHeader
-          userName={userName}
-          onUploadClick={handleUploadReceipt}
-        />
+        <DashboardHeader userName={userName} onUploadClick={handleUploadReceipt} />
 
         <TotalBalanceCard totalBalance={totalBalance} />
 
