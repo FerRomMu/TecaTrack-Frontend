@@ -14,13 +14,13 @@ const AppTitle = () => (
 );
 
 const UserGreeting = ({ nombreUsuario }) => (
-  <Text className="user-greeting">
+  <Text type="secondary" className="user-greeting">
     Hola, {nombreUsuario}
   </Text>
 );
 
 const UploadReceiptButton = () => (
-  <Button type="primary" size="large" className="upload-btn">
+  <Button type="primary" size="large">
     Cargar comprobante
   </Button>
 );
@@ -95,13 +95,22 @@ const themeConfig = {
     Layout: {
       bodyBg: '#0B0F14',
     },
+    Button: {
+      borderRadius: 8,
+      fontWeight: 500,
+      boxShadow: 'none',
+    },
     Card: {
+      boxShadow: '0 2px 10px -2px rgba(0,0,0,0.2)',
       colorBgContainer: '#121923',
       colorBorderSecondary: '#1E2A3A',
       paddingLG: 24,
+      borderRadiusLG: 16,
     },
     Typography: {
       colorTextHeading: '#E6EEF8',
+      titleMarginBottom: 0,
+      titleMarginTop: 0,
     }
   }
 };

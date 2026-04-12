@@ -20,27 +20,12 @@
 }
 
 .app-title {
-  margin: 0 !important;
-  color: #E6EEF8 !important;
   letter-spacing: -0.5px;
-}
-
-.user-greeting {
-  color: #9FB0C3;
-  font-size: 14px;
-}
-
-.upload-btn {
-  border-radius: 8px;
-  font-weight: 500;
-  box-shadow: none;
 }
 
 /* Total Balance Card */
 .total-card {
   margin-bottom: 32px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
 }
 
 .card-content-flex {
@@ -53,24 +38,18 @@
 }
 
 .total-label {
-  color: #9FB0C3;
-  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.total-value {
-  margin: 0 !important;
-  color: #E6EEF8 !important;
-  font-size: clamp(32px, 8vw, 48px) !important;
+.total-card h1.total-value {
+  font-size: clamp(32px, 8vw, 48px);
 }
 
 /* Account Balance Card */
 .account-card {
-  border-radius: 12px;
   height: 100%;
-  box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.2);
 }
 
 .account-card-content {
@@ -78,12 +57,5 @@
 }
 
 .account-name {
-  color: #9FB0C3;
-  font-size: 14px;
   font-weight: 500;
-}
-
-.account-value {
-  margin: 0 !important;
-  color: #E6EEF8 !important;
 }
