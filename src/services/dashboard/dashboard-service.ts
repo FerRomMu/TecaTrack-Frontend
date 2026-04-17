@@ -1,4 +1,4 @@
-import { DashboardData } from "../../features/dashboard/components/types";
+import { DashboardData } from '../../features/dashboard/components/types';
 
 export class DashboardService {
   static async getDashboardData(): Promise<DashboardData> {

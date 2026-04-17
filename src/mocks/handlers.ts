@@ -3,7 +3,7 @@ import { DashboardData } from '../features/dashboard/components/types';
 
 export const handlers = [
   http.get('/api/dashboard', async () => {
-
+    await delay(1200);
     const mockData: DashboardData = {
       userName: 'Alex',
       totalBalance: '$ 14,500.00',
