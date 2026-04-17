@@ -8,12 +8,23 @@ import { themeConfig } from './shared/theme';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
-root.render(
-  <StrictMode>
-    <ConfigProvider theme={themeConfig}>
-      <AntApp>
-        <App />
-      </AntApp>
-    </ConfigProvider>
-  </StrictMode>
-);
+async function enableMocking() {
+  if (import.meta.env.VITE_USE_MOCKS !== 'true') {
+    return;
+  }
+
+  const { worker } = await import('./mocks/browser');
+  return worker.start({ onUnhandledRequest: 'bypass' });
+}
+
+enableMocking().then(() => {
+  root.render(
+    <StrictMode>
+      <ConfigProvider theme={themeConfig}>
+        <AntApp>
+          <App />
+        </AntApp>
+      </ConfigProvider>
+    </StrictMode>
+  );
+});
