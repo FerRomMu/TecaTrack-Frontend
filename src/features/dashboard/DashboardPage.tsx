@@ -12,7 +12,7 @@ const { Title } = Typography;
 
 export function DashboardPage() {
   const { token } = theme.useToken();
-  const { data, loading, error } = useDashboardData();
+  const { data, loading, error } = useDashboardData(import.meta.env.VITE_DUMMY_USER_EMAIL);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
