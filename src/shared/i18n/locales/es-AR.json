@@ -10,11 +10,14 @@
     "upload_receipt": {
       "title": "Cargar Comprobante",
       "select_receipt": "Selecciona la imagen de tu comprobante."
-    }
+    },
+    "error_loading_data": "No se pudieron cargar los datos",
+    "my_accounts": "Mis Cuentas"
   },
   "common": {
     "upload": "Subir",
     "cancel": "Cancelar",
-    "browse_files": "Examinar archivos"
+    "browse_files": "Examinar archivos",
+    "loading": "Cargando..."
   }
 }
