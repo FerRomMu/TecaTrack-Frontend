@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Upload, message } from 'antd';
+import { Modal, Button, Upload, Typography, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 interface UploadReceiptModalProps {
@@ -18,7 +18,7 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
       title="Cargar Comprobante"
       open={open}
       onCancel={onCancel}
-      destroyOnClose
+      destroyOnHidden
       footer={[
         <Button key="back" onClick={onCancel}>
           Cancelar
@@ -28,14 +28,13 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
         </Button>,
       ]}
     >
-      <div style={{ padding: '20px 0', textAlign: 'center' }}>
+      <Space orientation="vertical" align="center" style={{ width: '100%' }} size={8}>
         <Upload beforeUpload={() => false} maxCount={1}>
           <Button icon={<UploadOutlined />}>Examinar archivos</Button>
         </Upload>
-        <p style={{ marginTop: 8, color: '#8c8c8c', fontSize: '12px' }}>
-          Selecciona la imagen de tu comprobante.
-        </p>
-      </div>
+
+        <Typography.Text type="secondary">Selecciona la imagen de tu comprobante.</Typography.Text>
+      </Space>
     </Modal>
   );
 };
