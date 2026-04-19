@@ -4,6 +4,8 @@ import { TotalBalanceCard } from './components/TotalBalanceCard';
 import { AccountBalanceCard } from './components/AccountBalanceCard';
 import { useDashboardData } from './hooks/useDashboardData';
 import { LoadingState, ErrorState } from '../../shared/components/StateFeedback';
+import { useState } from 'react';
+import { UploadReceiptModal } from './components/UploadReceiptModal';
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -11,10 +13,10 @@ const { Title } = Typography;
 export function DashboardPage() {
   const { token } = theme.useToken();
   const { data, loading, error } = useDashboardData();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleUploadReceipt = () => {
-    console.log('Upload receipt clicked');
-  };
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <Layout style={{ minHeight: '100vh', backgroundColor: token.colorBgBase }}>
@@ -32,7 +34,7 @@ export function DashboardPage() {
             flex: 1,
           }}
         >
-          <DashboardHeader userName={data.userName} onUploadClick={handleUploadReceipt} />
+          <DashboardHeader userName={data.userName} onUploadClick={handleOpenModal} />
 
           <TotalBalanceCard totalBalance={data.totalBalance} />
 
@@ -47,6 +49,7 @@ export function DashboardPage() {
               </Col>
             ))}
           </Row>
+          <UploadReceiptModal open={isModalOpen} onCancel={handleCloseModal} />
         </Content>
       )}
     </Layout>
