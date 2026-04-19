@@ -1,5 +1,9 @@
 # TecaTrack Frontend
 
+<p align="center">
+  <img src=".github/assets/app-icon.png" alt="TecaTrack Logo" width="350"/>
+</p>
+
 Welcome to the TecaTrack Frontend repository. This project is a modern web application built with a focus on premium design, performance, and developer experience.
 
 ## 🚀 Tech Stack
