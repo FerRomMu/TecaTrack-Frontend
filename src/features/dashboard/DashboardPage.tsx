@@ -6,24 +6,27 @@ import { useDashboardData } from './hooks/useDashboardData';
 import { LoadingState, ErrorState } from '../../shared/components/StateFeedback';
 import { useState } from 'react';
 import { UploadReceiptModal } from './components/UploadReceiptModal';
+import { useTranslation } from 'react-i18next';
 
 const { Content } = Layout;
 const { Title } = Typography;
 
 export function DashboardPage() {
   const { token } = theme.useToken();
-  const { data, loading, error } = useDashboardData();
+  const { data, loading, error } = useDashboardData(import.meta.env.VITE_DUMMY_USER_EMAIL);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
+  const { t } = useTranslation();
+
   return (
     <Layout style={{ minHeight: '100vh', backgroundColor: token.colorBgBase }}>
       {loading ? (
-        <LoadingState message="Cargando resumen..." />
+        <LoadingState message={t('common.loading')} />
       ) : error || !data ? (
-        <ErrorState description={error || 'No se pudieron cargar los datos'} />
+        <ErrorState description={error || t('dashboard.error_loading_data')} />
       ) : (
         <Content
           style={{
@@ -39,7 +42,7 @@ export function DashboardPage() {
           <TotalBalanceCard totalBalance={data.totalBalance} />
 
           <Title level={5} style={{ marginBottom: 16 }}>
-            Mis Cuentas
+            {t('dashboard.my_accounts')}
           </Title>
 
           <Row gutter={[16, 16]}>

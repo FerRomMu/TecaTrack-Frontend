@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import { themeConfig } from './shared/theme';
 import { enableMocking } from './mocks/enable-mocking';
+import './shared/i18n/i18n';
 
 await enableMocking();
 const container = document.getElementById('root');

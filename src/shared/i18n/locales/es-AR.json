@@ -1,0 +1,29 @@
+{
+  "dashboard": {
+    "header": {
+      "welcome": "Hola, {{userName}}",
+      "upload_button": "Cargar comprobante"
+    },
+    "total_balance": {
+      "title": "Saldo total"
+    },
+    "upload_receipt": {
+      "title": "Cargar Comprobante",
+      "select_receipt": "Selecciona la imagen de tu comprobante."
+    },
+    "error_loading_data": "No se pudieron cargar los datos",
+    "my_accounts": "Mis Cuentas"
+  },
+  "shared": {
+    "state_feedback": {
+      "error_loading_data": "No se pudo completar la operación"
+    }
+  },
+  "common": {
+    "upload": "Subir",
+    "cancel": "Cancelar",
+    "browse_files": "Examinar archivos",
+    "loading": "Cargando...",
+    "error": "Error"
+  }
+}
