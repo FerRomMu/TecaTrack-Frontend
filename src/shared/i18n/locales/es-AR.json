@@ -6,6 +6,15 @@
     },
     "total_balance": {
       "title": "Saldo total"
+    },
+    "upload_receipt": {
+      "title": "Cargar Comprobante",
+      "select_receipt": "Selecciona la imagen de tu comprobante."
     }
+  },
+  "common": {
+    "upload": "Subir",
+    "cancel": "Cancelar",
+    "browse_files": "Examinar archivos"
   }
 }
