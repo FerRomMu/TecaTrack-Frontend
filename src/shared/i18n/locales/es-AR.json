@@ -14,10 +14,16 @@
     "error_loading_data": "No se pudieron cargar los datos",
     "my_accounts": "Mis Cuentas"
   },
+  "shared": {
+    "state_feedback": {
+      "error_loading_data": "No se pudo completar la operación"
+    }
+  },
   "common": {
     "upload": "Subir",
     "cancel": "Cancelar",
     "browse_files": "Examinar archivos",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "error": "Error"
   }
 }
