@@ -5,7 +5,9 @@ import { UserResponse, AccountsResponse } from './types';
 
 export class DashboardService {
   static async getDashboardData(userEmail: string): Promise<DashboardData> {
-    const user = await apiClient<UserResponse>(`/users/email/${userEmail}`);
+    const user = await apiClient<UserResponse>(
+      `/users/email/${encodeURIComponent(userEmail)}`
+    );
 
     const { accounts, total_balance } = await apiClient<AccountsResponse>(
       `/accounts/user/${user.id}`
