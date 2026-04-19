@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -25,9 +27,15 @@
     "eslint-plugin-react-refresh": "0.5.2",
     "globals": "17.4.0",
     "jiti": "^2.6.1",
+    "msw": "^2.13.4",
     "prettier": "3.8.2",
     "typescript": "6.0.2",
     "typescript-eslint": "8.58.1",
     "vite": "8.0.8"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
