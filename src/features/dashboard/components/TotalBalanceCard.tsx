@@ -1,4 +1,5 @@
 import { Card, Flex, Typography, theme } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const { Title, Text } = Typography;
 
@@ -8,6 +9,7 @@ type TotalBalanceCardProps = {
 
 export function TotalBalanceCard({ totalBalance }: TotalBalanceCardProps) {
   const { token } = theme.useToken();
+  const { t } = useTranslation();
 
   return (
     <Card
@@ -18,8 +20,11 @@ export function TotalBalanceCard({ totalBalance }: TotalBalanceCardProps) {
       }}
     >
       <Flex vertical gap={4}>
-        <Text type="secondary" style={{ fontSize: 12, letterSpacing: 0.5 }}>
-          BALANCE TOTAL
+        <Text
+          type="secondary"
+          style={{ fontSize: 12, letterSpacing: 0.5, textTransform: 'uppercase' }}
+        >
+          {t('dashboard.total_balance.title')}
         </Text>
 
         <Title level={1} style={{ margin: 0, color: token.colorPrimary }}>

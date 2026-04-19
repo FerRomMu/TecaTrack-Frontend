@@ -3,6 +3,9 @@
     "header": {
       "welcome": "Hola, {{userName}}",
       "upload_button": "Cargar comprobante"
+    },
+    "total_balance": {
+      "title": "Saldo total"
     }
   }
 }
