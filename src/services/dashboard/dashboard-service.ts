@@ -1,6 +1,6 @@
 import { apiClient } from '../../shared/utils/apiClient';
 import { DashboardData } from '../../features/dashboard/components/types';
-import { formatCurrency } from '../../shared/utils/formatcurrency';
+import { formatCurrency } from '../../shared/utils/formatCurrency';
 import { UserResponse, AccountsResponse } from './types';
 
 export class DashboardService {

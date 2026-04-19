@@ -8,7 +8,10 @@ export function useDashboardData(email: string | null) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!email) return;
+    if (!email) {
+      setLoading(false);
+      return;
+    }
     const safeEmail = email;
 
     async function loadData() {
