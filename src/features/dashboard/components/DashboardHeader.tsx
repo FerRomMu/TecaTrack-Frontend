@@ -1,4 +1,5 @@
 import { Flex, Typography, Button } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const { Title, Text } = Typography;
 
@@ -8,6 +9,8 @@ type DashboardHeaderProps = {
 };
 
 export function DashboardHeader({ userName, onUploadClick }: DashboardHeaderProps) {
+  const { t } = useTranslation();
+
   return (
     <Flex
       justify="space-between"
@@ -20,11 +23,11 @@ export function DashboardHeader({ userName, onUploadClick }: DashboardHeaderProp
         <Title level={3} style={{ margin: 0 }}>
           TecaTrack
         </Title>
-        <Text type="secondary">Hola, {userName}</Text>
+        <Text type="secondary">{t('dashboard.header.welcome', { userName })}</Text>
       </div>
 
       <Button type="primary" size="large" shape="round" onClick={onUploadClick}>
-        Cargar comprobante
+        {t('dashboard.header.upload_button')}
       </Button>
     </Flex>
   );
