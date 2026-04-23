@@ -12,6 +12,8 @@ Welcome to the TecaTrack Frontend repository. This project is a modern web appli
 - **Build Tool**: [Vite 8](https://vitejs.dev/)
 - **Language**: [TypeScript 6](https://www.typescriptlang.org/)
 - **UI Component Library**: [Ant Design (AntD) 6](https://ant.design/)
+- **Internationalization**: [i18next](https://www.i18next.com/) & [react-i18next](https://react.i18next.com/)
+- **Mocking**: [Mock Service Worker (MSW)](https://mswjs.io/)
 - **Linting**: [ESLint 9](https://eslint.org/)
 - **Formatting**: [Prettier 3](https://prettier.io/)
 
@@ -23,6 +25,16 @@ Welcome to the TecaTrack Frontend repository. This project is a modern web appli
 
 - [Node.js](https://nodejs.org/) (Latest LTS recommended)
 - [npm](https://www.npmjs.com/) (usually comes with Node.js)
+
+### Environment Variables
+
+Before running the application, create a `.env` file in the root directory based on the following template:
+
+```env
+VITE_USE_MOCKS=false
+VITE_API_BASE_URL=http://127.0.0.1:8000
+VITE_DUMMY_USER_EMAIL=dummyuser@example.com
+```
 
 ### Installation
 
@@ -48,9 +60,10 @@ Welcome to the TecaTrack Frontend repository. This project is a modern web appli
 
 ```text
 src/
-├── theme/          # Ant Design custom theme configuration
-│   └── theme.tsx   # Global tokens and component overrides
-├── components/     # Reusable UI components
+├── features/       # Feature-based modules (e.g., dashboard)
+├── mocks/          # MSW mock handlers and configuration
+├── services/       # API integration services
+├── shared/         # Shared resources (components, i18n, theme, utils)
 ├── App.tsx         # Main application component & layout
 ├── main.tsx        # Application entry point
 ├── index.css       # Global base styles
@@ -64,6 +77,8 @@ src/
 - `npm run dev`: Starts the Vite development server with HMR.
 - `npm run build`: Runs TypeScript type checks (`tsc`) and builds the production bundle.
 - `npm run lint`: Runs ESLint to find and fix code quality issues.
+- `npm run lint:fix`: Runs ESLint and automatically fixes fixable issues.
+- `npm run format`: Runs Prettier to format the codebase.
 - `npm run preview`: Previews the production build locally.
 
 ---
@@ -72,7 +87,7 @@ src/
 
 ### Styling & Theme
 We use **Ant Design's Design Token** system for styling. Avoid writing raw CSS or using `!important` whenever possible.
-- Customize the global look in `src/theme/theme.tsx`.
+- Customize the global look in `src/shared/theme.tsx`.
 - Use `theme.useToken()` or component-level props (`styles`, `classNames`) to access the theme context in your components.
 
 ### Code Quality & Formatting
@@ -89,5 +104,5 @@ We use **Ant Design's Design Token** system for styling. Avoid writing raw CSS o
 ## 🤝 Onboarding for New Developers
 
 1. **Configure your Editor**: Install the recommended extensions for VS Code (ESLint, Prettier).
-2. **Explore the Theme**: Check `src/theme/theme.tsx` to understand the color palette and typography.
+2. **Explore the Theme**: Check `src/shared/theme.tsx` to understand the color palette and typography.
 3. **Run Linting**: Run `npm run lint` before committing to ensure your code matches the style guide.
