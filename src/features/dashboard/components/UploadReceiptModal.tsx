@@ -58,11 +58,15 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
     >
       <Space orientation="vertical" align="center" style={{ width: '100%' }} size={8}>
         <Upload
+          disabled={uploading}
           beforeUpload={(f) => {
             setFile(f);
             return false;
           }}
-          onRemove={() => setFile(null)}
+          onRemove={() => {
+            if (uploading) return false;
+            setFile(null);
+          }}
           maxCount={1}
         >
           <Button icon={<UploadOutlined />}>{t('common.browse_files')}</Button>
