@@ -21,15 +21,16 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
     try {
       await ReceiptService.uploadReceipt(file);
       window.location.reload();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error uploading receipt', error);
-      message.error(t('dashboard.upload_receipt.error_uploading') || 'Error al procesar el comprobante');
+      message.error(error.message || t('dashboard.upload_receipt.error_uploading'));
     } finally {
       setUploading(false);
     }
   };
 
   const handleCancel = () => {
+    if (uploading) return;
     setFile(null);
     onCancel();
   };
@@ -44,9 +45,9 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
         <Button key="back" onClick={handleCancel} disabled={uploading}>
           {t('common.cancel')}
         </Button>,
-        <Button 
-          key="submit" 
-          type="primary" 
+        <Button
+          key="submit"
+          type="primary"
           onClick={handleUpload}
           loading={uploading}
           disabled={!file}
@@ -56,11 +57,11 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
       ]}
     >
       <Space orientation="vertical" align="center" style={{ width: '100%' }} size={8}>
-        <Upload 
+        <Upload
           beforeUpload={(f) => {
             setFile(f);
             return false;
-          }} 
+          }}
           onRemove={() => setFile(null)}
           maxCount={1}
         >
