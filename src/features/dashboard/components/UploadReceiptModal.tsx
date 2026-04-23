@@ -21,9 +21,9 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
     try {
       await ReceiptService.uploadReceipt(file);
       window.location.reload();
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error uploading receipt', error);
-      message.error(error.message || t('dashboard.upload_receipt.error_uploading'));
+      message.error(t('dashboard.upload_receipt.error_uploading'));
     } finally {
       setUploading(false);
     }

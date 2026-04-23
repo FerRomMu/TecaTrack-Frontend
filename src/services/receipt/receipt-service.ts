@@ -1,8 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import i18n from '../../shared/i18n/i18n';
 
 export class ReceiptService {
   static async uploadReceipt(file: File): Promise<void> {
-    const { t } = useTranslation();
     const formData = new FormData();
     formData.append('file', file);
 
@@ -19,11 +18,8 @@ export class ReceiptService {
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
-    } catch (error: any) {
-      if (error.name === 'AbortError') {
-        throw new Error(t('dashboard.upload_receipt.timeout_error'));
-      }
-      throw error;
+    } catch {
+      throw new Error(i18n.t('dashboard.upload_receipt.error_uploading'));
     } finally {
       clearTimeout(timeoutId);
     }
