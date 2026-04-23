@@ -4,7 +4,15 @@
   <img src=".github/assets/app-icon.png" alt="TecaTrack Logo" width="350"/>
 </p>
 
-Welcome to the TecaTrack Frontend repository. This project is a modern web application built with a focus on premium design, performance, and developer experience.
+Welcome to the TecaTrack Frontend repository. This project is a modern web application built for managing receipts and transactions using OCR technology. Currently in a Proof of Concept (PoC) phase.
+
+## Main repository
+
+If you haven’t read the documentation in the project’s main repository yet, you can find it here:
+
+[Project Main Repository](https://github.com/FerRomMu/TecaTrack)
+
+All project documentation is centralized there.
 
 ## 🚀 Tech Stack
 
@@ -39,12 +47,14 @@ VITE_DUMMY_USER_EMAIL=dummyuser@example.com
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd TecaTrack-Frontend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -86,16 +96,20 @@ src/
 ## 🎨 Development Guidelines
 
 ### Styling & Theme
+
 We use **Ant Design's Design Token** system for styling. Avoid writing raw CSS or using `!important` whenever possible.
+
 - Customize the global look in `src/shared/theme.tsx`.
 - Use `theme.useToken()` or component-level props (`styles`, `classNames`) to access the theme context in your components.
 
 ### Code Quality & Formatting
+
 - **TypeScript**: Use strict typing. Avoid `any` where possible.
 - **Prettier**: Formatting is enforced via Prettier. It is highly recommended to enable "Format on Save" in your editor.
 - **ESLint**: Follow the project's linting rules. The CI will fail if there are linting errors.
 
 ### Component Design
+
 - Prioritize **Rich Aesthetics**. Every UI element should feel premium and follow the established design language.
 - Use **Semantic HTML** (Header, Main, Section, etc.) for better accessibility and SEO.
 
