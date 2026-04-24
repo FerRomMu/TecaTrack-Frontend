@@ -9,7 +9,9 @@
     },
     "upload_receipt": {
       "title": "Cargar Comprobante",
-      "select_receipt": "Selecciona la imagen de tu comprobante."
+      "select_receipt": "Selecciona la imagen de tu comprobante.",
+      "error_uploading": "Error al subir el comprobante",
+      "timeout_error": "El servidor tardó demasiado en responder"
     },
     "error_loading_data": "No se pudieron cargar los datos",
     "my_accounts": "Mis Cuentas"

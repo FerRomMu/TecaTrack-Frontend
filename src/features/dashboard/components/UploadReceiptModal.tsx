@@ -1,7 +1,8 @@
-import React from 'react';
-import { Modal, Button, Upload, Typography, Space } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Button, Upload, Typography, Space, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { ReceiptService } from '../../../services/receipt/receipt-service';
 
 interface UploadReceiptModalProps {
   open: boolean;
@@ -10,9 +11,27 @@ interface UploadReceiptModalProps {
 
 export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, onCancel }) => {
   const { t } = useTranslation();
+  const [file, setFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
-  const handleUpload = () => {
-    console.log(`Se subio el comprobante`);
+  const handleUpload = async () => {
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      await ReceiptService.uploadReceipt(file);
+      window.location.reload();
+    } catch (error) {
+      console.error('Error uploading receipt', error);
+      message.error(t('dashboard.upload_receipt.error_uploading'));
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleCancel = () => {
+    if (uploading) return;
+    setFile(null);
     onCancel();
   };
 
@@ -20,19 +39,36 @@ export const UploadReceiptModal: React.FC<UploadReceiptModalProps> = ({ open, on
     <Modal
       title={t('dashboard.upload_receipt.title')}
       open={open}
-      onCancel={onCancel}
+      onCancel={handleCancel}
       destroyOnHidden
       footer={[
-        <Button key="back" onClick={onCancel}>
+        <Button key="back" onClick={handleCancel} disabled={uploading}>
           {t('common.cancel')}
         </Button>,
-        <Button key="submit" type="primary" onClick={handleUpload}>
+        <Button
+          key="submit"
+          type="primary"
+          onClick={handleUpload}
+          loading={uploading}
+          disabled={!file}
+        >
           {t('common.upload')}
         </Button>,
       ]}
     >
       <Space orientation="vertical" align="center" style={{ width: '100%' }} size={8}>
-        <Upload beforeUpload={() => false} maxCount={1}>
+        <Upload
+          disabled={uploading}
+          beforeUpload={(f) => {
+            setFile(f);
+            return false;
+          }}
+          onRemove={() => {
+            if (uploading) return false;
+            setFile(null);
+          }}
+          maxCount={1}
+        >
           <Button icon={<UploadOutlined />}>{t('common.browse_files')}</Button>
         </Upload>
 
